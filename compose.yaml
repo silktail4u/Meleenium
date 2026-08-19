@@ -1,0 +1,16 @@
+services:
+  meleenium:
+    build: .
+    container_name: meleenium
+    restart: unless-stopped
+
+    ports:
+      - "5000:5000"
+
+    environment:
+      LOGINURL: https://www.start.gg/login
+      USERNAME: {$USERNAME}
+      PASSWORD: {$PASSWORD}
+      URL: {$URL}
+
+    shm_size: "2gb"
