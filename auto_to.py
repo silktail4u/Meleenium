@@ -633,11 +633,16 @@ worker_thread = threading.Thread(
 )
 
 worker_thread.start()
-
-
 # ============================================================
-# Flask endpoint
+# Flask endpoints
 # ============================================================
+@app.route("/health", methods=["GET"])
+def health():
+    return {
+        "status": "ok",
+        "service": "meleenium"
+    }, 200
+
 
 @app.route(
     "/find-matches",
