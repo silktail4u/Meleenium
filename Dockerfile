@@ -6,10 +6,17 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY auto_to.py .
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    libffi-dev \
+    libssl-dev \
+    iproute2 \
+    gettext-base\
+    sed\
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 

@@ -1,3 +1,4 @@
 Flask
 requests
 gunicorn
+git+https://github.com/sticks-stuff/peppi-py
